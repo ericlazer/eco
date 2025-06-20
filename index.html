@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem - Nexio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/nexio.css">
+</head>
+<body>
+    <!-- Background Pattern -->
+    <div class="background-tiles"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">nex<span>io</span></a>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/ecosystem" class="active">Ecosystem</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/docs">Docs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Nexio Ecosystem</h1>
+            <p>Discover the innovative projects and partners building the future of Bitcoin DeFi on Nexio's parallelized rollup</p>
+        </section>
+
+        <!-- Spotlight Section -->
+        <section class="spotlight-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Partners</h2>
+                    <p class="section-subtitle">Leading projects pioneering Bitcoin's DeFi revolution</p>
+                </div>
+                <div class="spotlight-grid" id="spotlightGrid">
+                    <!-- Spotlight cards will be generated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <h3>55+</h3>
+                    <p>Ecosystem Partners</p>
+                </div>
+                <div class="stat-item">
+                    <h3>30,000+</h3>
+                    <p>TPS Capability</p>
+                </div>
+                <div class="stat-item">
+                    <h3>< $0.01</h3>
+                    <p>Transaction Fees</p>
+                </div>
+                <div class="stat-item">
+                    <h3>Multi-VM</h3>
+                    <p>Move & Solidity Support</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- All Partners -->
+        <section class="partners-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">All Ecosystem Partners</h2>
+                    <p class="section-subtitle">Explore our growing network of builders and innovators</p>
+                </div>
+                
+                <!-- Category Tabs -->
+                <div class="category-tabs">
+                    <div class="category-tab active" onclick="filterPartners('all')">All</div>
+                    <div class="category-tab" onclick="filterPartners('infrastructure')">Infrastructure</div>
+                    <div class="category-tab" onclick="filterPartners('defi')">DeFi</div>
+                    <div class="category-tab" onclick="filterPartners('gaming')">Gaming</div>
+                    <div class="category-tab" onclick="filterPartners('tools')">Tools</div>
+                </div>
+
+                <div class="partners-grid" id="partnersGrid">
+                    <!-- Partners will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+            <!-- Modal content will be dynamically inserted -->
+        </div>
+    </div>
+
+    <script src="scripts/partners-data.js"></script>
+    <script src="scripts/ecosystem.js"></script>
+</body>
+</html>
