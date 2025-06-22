@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosystem - Nexio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/nexio.css">
+</head>
+<body class="hide-scrollbar">
+    <!-- Background Grid Pattern -->
+    <div class="background-tiles"></div>
+    
+    <!-- Border Container -->
+    <div class="border-container">
+        <div class="border"></div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 20 20" class="cursor">
+            <path d="M11.3302 15.3435L14.8443 13.3928C15.3442 13.1152 15.658 12.592 15.6675 12.0203L15.7343 8.00178C15.7438 7.43037 15.4479 6.89726 14.9578 6.60319L11.5124 4.53549C11.0222 4.24131 10.4123 4.23101 9.91239 4.5085L6.39834 6.45923C5.89842 6.73675 5.58458 7.25993 5.57508 7.83163L5.50826 11.8502C5.49876 12.4216 5.79474 12.9547 6.28478 13.2488L9.73024 15.3165C10.2205 15.6107 10.8304 15.621 11.3302 15.3435Z" stroke-width="1.5" class="cursor-path"></path>
+        </svg>
+    </div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">nex<span>io</span></a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">home</a></li>
+                <li><a href="/ecosystem" class="nav-link active">ecosystem</a></li>
+                <li><a href="/blog" class="nav-link">blog</a></li>
+                <li><a href="/docs" class="nav-link">docs</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="label">welcome to the</div>
+                <h1>nexio ecosystem</h1>
+                <p>Discover the innovative projects and partners building the future of Bitcoin DeFi on Nexio's parallelized rollup</p>
+            </div>
+        </section>
+
+        <!-- Stats Section - White Card -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <h3>55+</h3>
+                        <p>ecosystem partners</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>30,000+</h3>
+                        <p>tps capability</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>< $0.01</h3>
+                        <p>transaction fees</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>multi-vm</h3>
+                        <p>move & solidity support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spotlight Section - White Cards -->
+        <section class="spotlight-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">featured</div>
+                    <h2 class="section-title">ecosystem partners</h2>
+                    <p class="section-subtitle">Leading projects pioneering Bitcoin's DeFi revolution</p>
+                </div>
+                <div class="spotlight-grid" id="spotlightGrid">
+                    <!-- Spotlight cards will be generated here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- All Partners - Transparent Cards -->
+        <section class="partners-section">
+            <div class="container">
+                <div class="section-header">
+                    <div class="label">discover</div>
+                    <h2 class="section-title">all ecosystem partners</h2>
+                    <p class="section-subtitle">Explore our growing network of builders and innovators</p>
+                </div>
+                
+                <!-- Category Tabs - Transparent -->
+                <div class="category-tabs">
+                    <div class="category-tab active" onclick="filterPartners('all')">all</div>
+                    <div class="category-tab" onclick="filterPartners('infrastructure')">infrastructure</div>
+                    <div class="category-tab" onclick="filterPartners('defi')">defi</div>
+                    <div class="category-tab" onclick="filterPartners('gaming')">gaming</div>
+                    <div class="category-tab" onclick="filterPartners('tools')">tools</div>
+                </div>
+
+                <div class="partners-grid" id="partnersGrid">
+                    <!-- Partners will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modal Overlay - White Card -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+        <div class="modal-content" id="modalContent" onclick="event.stopPropagation()">
+            <!-- Modal content will be dynamically inserted -->
+        </div>
+    </div>
+
+    <script src="scripts/partners-data.js"></script>
+    <script src="scripts/ecosystem.js"></script>
+    <script>
+        // Custom cursor implementation
+        const cursor = document.getElementById('custom-cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        
+        // Check if it's a touch device
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        if (!isTouchDevice && window.innerWidth > 991) {
+            cursor.style.display = 'block';
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            
+            // Smooth cursor animation
+            function animateCursor() {
+                const dx = mouseX - cursorX;
+                const dy = mouseY - cursorY;
+                
+                cursorX += dx * 0.125;
+                cursorY += dy * 0.125;
+                
+                cursor.style.left = cursorX + 'px';
+                cursor.style.top = cursorY + 'px';
+                
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+            
+            // Add hover effects
+            const interactiveElements = document.querySelectorAll('a, button, .category-tab, .partner-card, .spotlight-card');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1.2)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+        } else {
+            cursor.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
