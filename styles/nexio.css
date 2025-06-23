@@ -109,8 +109,8 @@ nav {
     display: flex;
     position: fixed;
     inset: 2rem 2rem auto;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    border: 1px solid var(--white);
     border-radius: 0.25rem;
     backdrop-filter: blur(10px);
 }
@@ -135,11 +135,74 @@ nav {
     color: var(--secondary);
 }
 
+/* Navigation layout */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Nexio wordmark with cube */
+#logo.logo-brandname {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 200px;
+    max-height: 48px;
+}
+
+#logo .nav-logo {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+}
+
+#logo .nav-logo[width] {
+    width: 48px !important;
+}
+
+#logo .nav-brand {
+    height: 48px;
+    width: 152px;
+}
+
+#logo .nav-brand[width] {
+    width: 152px !important;
+}
+
 .nav-links {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    align-items: center;
     list-style: none;
+    margin: 0;
+    padding: 0.25rem 1.5rem;
+    background: var(--tertiary);
+    border-radius: 0.25rem;
+}
+
+.nav-links li {
+    position: relative;
+    padding: 0 0.75rem;
+}
+
+.nav-links li + li {
+    margin-left: 2rem;
+    padding-left: 2rem;
+}
+
+.nav-links li + li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1px;
+    height: 14px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.55);
+    border-left: 1px dotted currentColor;
 }
 
 .nav-link {
@@ -165,37 +228,6 @@ nav {
     display: none;
 }
 
-.mobile-menu-button {
-    width: 32px;
-    height: 32px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--tertiary);
-    position: relative;
-    display: none;
-}
-
-.mobile-menu-button .horizontal-line,
-.mobile-menu-button .vertical-line {
-    position: absolute;
-    left: 0;
-    top: 50%;
-    width: 100%;
-    height: 2px;
-    background-color: currentColor;
-    transform: translateY(-50%);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.mobile-menu-button .vertical-line {
-    transform: translateY(-50%) rotate(90deg);
-}
-
-.mobile-menu-button.active .vertical-line {
-    transform: translateY(-50%) rotate(0);
-    opacity: 0;
-}
 
 .mobile-menu {
     position: fixed;
@@ -1380,3 +1412,35 @@ h5 {
         justify-content: center;
     }
 }
+
+/* ─── MOBILE BURGER / PLUS ───────────────────────────────── */
+@media (max-width:991px){
+  .desktop-only{display:none;}
+  .mobile-only{display:block;}
+
+  .mobile-menu-button{
+    width:42px;height:42px;
+    position:relative;
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:8px;
+    background:transparent;   /* removes orange fill */
+  }
+  .mobile-menu-button .horizontal-line,
+  .mobile-menu-button .vertical-line{
+    position:absolute;
+    background:#073252;
+  }
+  .horizontal-line{
+    width:60%;height:2px;
+    top:50%;left:20%;
+    transform:translateY(-50%);
+  }
+  .vertical-line{
+    height:60%;width:2px;
+    top:20%;left:50%;
+    transform:translateX(-50%);
+  }
+}
+
+/* subtle hover */
+.nav-link:hover{opacity:.8;}
