@@ -110,6 +110,14 @@ nav {
     position: fixed;
     inset: 2rem 2rem auto;
     background: var(--main);
+    border-radius: 0.25rem;
+    backdrop-filter: blur(10px);
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    background: var(--main);
     border: 1px solid var(--white);
     border-radius: 0.25rem;
     backdrop-filter: blur(10px);
