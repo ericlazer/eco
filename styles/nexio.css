@@ -109,8 +109,8 @@ nav {
     display: flex;
     position: fixed;
     inset: 2rem 2rem auto;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: var(--main);
+    border: 1px solid var(--white);
     border-radius: 0.25rem;
     backdrop-filter: blur(10px);
 }
@@ -135,11 +135,50 @@ nav {
     color: var(--secondary);
 }
 
+/* Nexio wordmark with cube */
+#logo.logo-brandname {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: 200px;
+    max-height: 48px;
+}
+
+#logo .nav-logo {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+}
+
+#logo .nav-logo[width] {
+    width: 48px !important;
+}
+
+#logo .nav-brand {
+    height: 48px;
+    width: 152px;
+}
+
+#logo .nav-brand[width] {
+    width: 152px !important;
+}
+
 .nav-links {
     display: flex;
     justify-content: center;
     gap: 2rem;
     list-style: none;
+}
+
+.nav-links li {
+    padding: 0 0.75rem;
+    border-right: 1px dotted var(--white);
+}
+
+.nav-links li:last-child {
+    border-right: none;
 }
 
 .nav-link {
