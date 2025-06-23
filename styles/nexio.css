@@ -101,7 +101,8 @@ body {
 }
 
 /* Navigation Bar - Nexio style */
-nav {
+/* using .nav-bar class instead of nav element */
+.nav-bar {
     z-index: 110;
     justify-content: space-between;
     align-items: center;
@@ -902,7 +903,7 @@ h5 {
 }
 
 @media screen and (max-width: 767px) {
-    nav {
+    .nav-bar {
         inset: 1.25rem 1.25rem auto;
         padding: 0 1rem;
     }
@@ -1004,7 +1005,7 @@ h5 {
         display: flex;
     }
 
-    nav {
+    .nav-bar {
         inset: 1.25rem 1.25rem auto;
         padding: 0 1rem;
     }
