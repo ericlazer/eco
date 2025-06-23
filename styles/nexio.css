@@ -1419,3 +1419,66 @@ h5 {
         justify-content: center;
     }
 }
+
+/* ─── NAV BAR LAYOUT ─────────────────────────────────────── */
+.nav-bar{
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+}
+.nav-links{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.nav-links li{position:relative;}
+.nav-links li + li{
+  margin-left:2rem;
+  padding-left:2rem;
+}
+.nav-links li + li::before{
+  content:"";
+  position:absolute;
+  left:0; top:50%;
+  width:1px; height:14px;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.55);
+  border-left:1px dotted currentColor;
+}
+.nav-link.active{color:#FC5C21;}
+
+/* ─── MOBILE BURGER / PLUS ───────────────────────────────── */
+@media (max-width:991px){
+  .desktop-only{display:none;}
+  .mobile-only{display:block;}
+
+  .mobile-menu-button{
+    width:42px;height:42px;
+    position:relative;
+    border:1px solid rgba(255,255,255,.8);
+    border-radius:8px;
+    background:transparent;   /* removes orange fill */
+  }
+  .mobile-menu-button .horizontal-line,
+  .mobile-menu-button .vertical-line{
+    position:absolute;
+    background:#073252;
+  }
+  .horizontal-line{
+    width:60%;height:2px;
+    top:50%;left:20%;
+    transform:translateY(-50%);
+  }
+  .vertical-line{
+    height:60%;width:2px;
+    top:20%;left:50%;
+    transform:translateX(-50%);
+  }
+}
+
+/* subtle hover */
+.nav-link:hover{opacity:.8;}
