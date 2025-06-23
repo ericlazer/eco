@@ -4,6 +4,12 @@ const path = require('path');
 // Load partners data
 const { partnersData } = require("./scripts/partners-data.js");
 
+// Extract full logo markup from index.html so guides have the complete logo
+const indexHTML = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+const logoMarkup = indexHTML
+  .split('\n')
+  .find((line) => line.includes('class="logo-brandname"')) || '';
+
 // Updated guide template with Nexio hybrid styling (guides use white cards throughout)
 function generateGuideHTML(partner) {
     return `<!DOCTYPE html>
@@ -33,13 +39,15 @@ function generateGuideHTML(partner) {
 
     <!-- Navigation -->
     <nav class="nav-bar">
-        <div id="logo" class="logo-brandname"><svg data-w-id="logo-cube" xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 48 48" fill="none" class="nav-logo"><path d="M7.56308 14.2019V19.375L9.764 20.6579V24.6309L8.65679 25.2793L6.05078 23.9549L2 25.9828V28.6728L3.90387 29.5971H3.91737L2 30.3834V32.6872L4.579 34.3978C5.22712 34.8254 6.06429 34.8392 6.72591 34.4391L9.49395 32.7424C9.80451 32.5492 10.007 32.2043 10.007 31.8181V31.018L15.084 27.9555C15.4621 27.7348 15.6916 27.3209 15.6916 26.8657V20.0234C15.6781 20.0234 18.0681 18.6163 18.0681 18.6163L18.0951 14.1881L12.8156 11.1118L7.57658 14.2019H7.56308Z" fill="#073252"/><path d="M16.799 14.34L12.7617 12.05C12.7077 12.0224 12.6537 12.0224 12.5997 12.05L8.61642 14.3951C8.5084 14.4641 8.5084 14.6159 8.61642 14.6848L12.7212 16.9196C12.7752 16.9472 12.8292 16.9472 12.8697 16.9196L16.799 14.6297C16.907 14.5607 16.907 14.4089 16.799 14.34Z" fill="#FC5C21"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 100" fill="none" class="nav-brand"><path d="M3.85352 51.368C3.85352 37.19 3.85352 23.0158 3.85352 8.83769C3.85352 6.2574 4.82799 5.28254 7.4421 5.2748C13.0454 5.25933 18.6526 5.32896 24.2559 5.22838C26.2938 5.19356 27.3379 6.24193 28.0301 7.88991C28.4516 8.89572 28.7185 9.96343 29.0665 11.0002C29.7509 13.0234 30.6519 13.2903 32.2413 11.8397C35.826 8.57077 39.8903 6.11814 44.5887 4.92664C56.0931 2.01365 67.1334 2.87246 77.0484 9.93635C84.6162 15.329 88.2473 23.1705 89.7245 32.1377C90.2157 35.128 90.4013 38.1493 90.4013 41.1823C90.4013 58.6447 90.4051 76.1071 90.4013 93.5695C90.4013 96.351 89.3881 97.3452 86.5691 97.3452C80.4476 97.3529 74.3261 97.3529 68.2084 97.3452C65.691 97.3452 64.5812 96.2581 64.5812 93.7707C64.5812 76.6294 64.5734 59.4919 64.585 42.3505C64.585 40.0836 64.3917 37.8437 63.8233 35.6542C62.3886 30.1261 58.9779 26.5786 53.2199 25.832C45.8455 24.8804 39.0086 25.9829 34.1052 32.3156C31.1237 36.1648 29.925 40.7683 29.8321 45.5227C29.6311 55.8284 29.6813 66.138 29.6465 76.4475C29.6272 82.2464 29.6465 88.0453 29.6388 93.8442C29.6349 96.2349 28.5096 97.3374 26.1121 97.3413C19.9287 97.3413 13.7415 97.3452 7.55813 97.3413C4.83961 97.3413 3.85352 96.3626 3.85352 93.6894C3.85352 79.5771 3.85352 65.4648 3.85352 51.3525V51.368Z" fill="#073252"/></svg></div>
+        ${logoMarkup}
+        <div class="nav-center">
         <ul class="nav-links desktop-only">
             <li><a href="/" class="nav-link">home</a></li>
             <li><a href="../index.html" class="nav-link active">ecosystem</a></li>
             <li><a href="/blog" class="nav-link">blog</a></li>
             <li><a href="/docs" class="nav-link">docs</a></li>
         </ul>
+        </div>
         <div id="mobile-menu-button" class="mobile-menu-button mobile-only">
             <div class="horizontal-line"></div>
             <div class="vertical-line"></div>

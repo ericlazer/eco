@@ -109,6 +109,15 @@ nav {
     display: flex;
     position: fixed;
     inset: 2rem 2rem auto;
+    background: none;
+    border-radius: 0.25rem;
+    backdrop-filter: blur(10px);
+}
+
+.nav-center {
+    display: flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
     background: var(--main);
     border: 1px solid var(--white);
     border-radius: 0.25rem;
@@ -142,7 +151,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    max-width: 200px;
+    max-width: 216px;
     max-height: 48px;
 }
 
